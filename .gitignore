@@ -1,0 +1,11 @@
+.vscode
+tmp
+__pycache__/
+.DS_Store
+__pycache__
+
+dist/*/csv
+scrape/
+
+env/
+*.log

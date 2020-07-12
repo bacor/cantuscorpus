@@ -1,0 +1,287 @@
+chant:
+  fields:
+    - name: id
+      dtype: str
+      description: >
+        A globally unique, and human-readable id of the chant of the form 
+        `chant000253`. These are *not* the ids used by the Cantus database and may
+        not be consistent across CantusCorpus versions. See `orig_ids.csv` for the
+        mapping of ids to Cantus database ids.
+    - name: incipit
+      dtype: str
+      description: incipit of the chant
+    - name: cantus_id
+      dtype: str
+      description: >
+        See http://cantus.uwaterloo.ca/description#Cantus%20ID%20Number
+    - name: mode
+      dtype: str
+      description: >
+        Mode of the chant; see http://cantus.uwaterloo.ca/description#Mode
+      report_value_counts: true
+      report_min_freq: 5
+    - name: finalis
+      dtype: str
+      description: >
+        The final note of the chant, used e.g. when the mode is unclear. 
+        See http://cantus.uwaterloo.ca/description#Finalis
+    - name: differentia
+      dtype: str
+      description: >
+        See http://cantus.uwaterloo.ca/description#Differentia
+    - name: siglum
+      dtype: str
+    
+    - name: position
+      dtype: str
+      description: >
+        Liturgical role of a chant; 
+        see http://cantus.uwaterloo.ca/description#Position
+    
+    - name: folio
+      dtype: str
+      description: >
+        folio or page in the manuscript where the chant is found, 
+        see http://cantus.uwaterloo.ca/description#Folio
+    - name: sequence
+      dtype: str
+      description: >
+        Order in which the chant is found on the page or folio side.
+        See http://cantus.uwaterloo.ca/description#Sequence
+    - name: marginalia
+      dtype: str
+      description: >
+        additional clarification of the location of the chant on the 
+        folio or page; see http://cantus.uwaterloo.ca/description#Marginalia
+    - name: cao_concordances
+    
+    - name: feast_id
+      dtype: str
+      description: id of feast
+      report_value_counts: true
+      report_min_freq: 1
+      value_description_table: feast
+      value_description_template: "{description.description}"
+      report_other_values: false
+    - name: genre_id
+      dtype: str
+      description: id of the liturgical genre
+      report_value_counts: true
+      report_min_freq: 2
+      value_description_table: genre
+      value_description_template: "{description.description}"
+      # report_other_values: false
+    - name: office_id
+      dtype: int
+      description: id of the office
+    - name: source_id
+      dtype: str
+      description: id of source 
+      report_value_counts: true
+      report_min_freq: 1.5
+      value_description_table: source
+      value_description_template: "{description.title}"
+      report_other_values: false
+    - name: melody_id
+    - name: drupal_path
+      dtype: str
+      description: URL to Cantus website page of chant
+
+    - name: full_text
+      dtype: str
+      description: >
+        Full text in a standardized spelling. 
+        See http://cantus.uwaterloo.ca/description#Fulltext
+    - name: full_text_manuscript
+      dtype: str
+      description: >
+        Full text in the manuscript spelling. This also includes barlines, or
+        missing texts, etc. See http://cantus.uwaterloo.ca/description#MSSpelling
+        or the [Volpiano protocols](http://cantus.uwaterloo.ca/sites/default/files/documents/2.%20Volpiano%20Protocols.pdf)
+    - name: volpiano
+      dtype: str
+      description: >
+        Transcription of the melody in the Volpiano typeface.
+        See http://cantus.uwaterloo.ca/description#Volpiano
+        and the [Volpiano protocols](http://cantus.uwaterloo.ca/sites/default/files/documents/2.%20Volpiano%20Protocols.pdf)
+      report_value_counts: true
+      report_min_freq: 10
+      report_other_values: false
+    - name: notes
+      dtype: str
+      description: >
+        Indexing notes, see http://cantus.uwaterloo.ca/description#IndexingNotes
+
+century:
+  fields:
+    - name: id
+      dtype: str
+      description: >
+        A globally unique, human readable id of the form 'period_0900_0999'
+    - name: name
+      dtype: str
+      description: A description of the period, such as "9th century (875–900)"
+    - name: century
+      dtype: int
+      description: >
+        Which century the period lies in. The period 850–874 lies in the 9th 
+        century and has value `9`.
+    - name: start
+      dtype: int
+      description: The starting year of the period.
+    - name: end
+      dtype: int
+      description: >
+        The ending year of the period. This is inclusive, so the 15th century ends
+        in the year 1499.
+    - name: duration
+      dtype: int
+      description: >
+        The duration of the period in years: 25, 50 or 100 years
+
+feast:
+  fields:
+    - name: id
+      dtype: str
+      description: >
+        A globally unique, human readable feast ID of the form `feast_1234`
+    - name: name
+      dtype: str
+      description: >
+        Name of the feast, 
+        see http://cantus.uwaterloo.ca/description#Liturgical%20Occasion%20/%20Feast
+    - name: description
+      dtype: str
+    - name: date
+      dtype: str
+      description: Date of the feast, e.g. `Aug.16`
+    - name: month
+      dtype: int
+      description: month of the feast as an integer
+    - name: day
+      dtype: int
+      description: day of the month as an integer
+    - name: feast_code
+      dtype: int
+      description: a code for the feast
+    - name: notes
+      dtype: str
+
+genre:
+  fields:
+    - name: id
+      dtype: str
+      description: >
+        A globally unique id for the genre, of the form `genre_name`, where name
+        is a lower-cased version of the name abbreviation name. So `genre_r` is 
+        responsory, `genre_tcv` a tract verse, etc.
+    - name: name
+      dtype: str
+      description: >
+        An abbreviation for the chant genre;
+        see also http://cantus.uwaterloo.ca/genre
+    - name: description
+      dtype: str
+    - name: mass_or_office
+      dtype: list
+      description: >
+        Part of the office, mass or both?
+
+indexer:
+  fields:
+    - name: id
+      dtype: str
+      description: >
+        A globally unique id for the indexer, of the form `indexer_123`
+    - name: family_name
+      dtype: str
+      description: >
+        The family name of the indexer. Other personal information, such as the
+        given name, institution, city and country have been omitted.
+    - name: drupal_path
+      dtype: str
+      description: >
+        A URL to the indexer page on the Cantus site
+
+notation:
+  fields:
+    - name: id
+      dtype: str
+      description: A globally unique id of the form `notation_122`
+    - name: name 
+      dtype: str
+      description: Type of notation used
+
+office:
+  fields:
+    - name: id
+      dtype: str
+      description: >
+        A globally unique id of the form `office_name` where name is the 
+        abbreviation used by Cantus. So `office_l` is the lauds, `office_mi` the 
+        mass, etc.
+    - name: name
+      dtype: str
+    - name: description
+      dtype: str
+
+provenance:
+  fields:
+    - name: id
+      dtype: str
+      description: a globally unique id of the form `provenance_123`
+    - name: name 
+      dtype: str
+
+segment:
+  fields:
+    - name: id
+    - name: name
+
+siglum:
+  fields:
+    - name: id
+      dtype: str
+      description: a globally unique id of the form siglum_123
+    - name: name
+      dtype: str
+    - name: description
+      dtype: str
+
+source:
+  fields:
+    - name: id
+      dtype: str
+    - name: title
+      dtype: str
+    - name: description
+      dtype: str
+    - name: rism
+      dtype: str
+    - name: date
+      dtype: str
+    - name: century
+      dtype: str
+    - name: century_id
+      dtye: str
+      description: id of the century
+    - name: provenance
+      dtype: str
+    - name: provenance_detail
+      dtype: str
+    - name: provenance_id
+      dtype: str
+    - name: segment
+      dtype: str
+    - name: segment_id
+      dtype: str
+    - name: summary
+      dtype: str
+    - name: indexing_notes
+      dtype: str
+    - name: liturgical_occasions
+      dtype: str
+    - name: indexing_date
+      dtype: str
+    - name: drupal_path
+      dtype: str
