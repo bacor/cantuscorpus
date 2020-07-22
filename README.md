@@ -32,7 +32,7 @@ as [suggested on its website](http://cantus.uwaterloo.ca/citations):
 
 Further please cite the paper describing the CantusCorpus:
 
-    (forthcoming)
+>   Forthcoming...
 
 Versions
 --------
