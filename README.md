@@ -17,7 +17,7 @@ musicology, using the library [`chant21`](https://github.com/bacor/chant21/).
 [**> Download the latest release of the CantusCorpus**](https://github.com/bacor/cantuscorpus/releases/latest)
 
 [> Check out chant21](https://github.com/bacor/chant21/) and the
-[GregoBaseCorpus](https://github.com/bacor/gregobasecorpus/), a related plainchant corpus.*
+[GregoBaseCorpus](https://github.com/bacor/gregobasecorpus/), a related plainchant corpus.
 
 Citation
 --------
@@ -25,7 +25,7 @@ Citation
 If you use this corpus in your research, please cite the Cantus Database
 as [suggested on its website](http://cantus.uwaterloo.ca/citations):
 
-    Cantus: A Database for Latin Ecclesiastical Chant -- Inventories of Chant 
+>   Cantus: A Database for Latin Ecclesiastical Chant -- Inventories of Chant 
     Sources. Directed by Debra Lacoste (2011-), Terence Bailey (1997-2010), and 
     Ruth Steiner (1987-1996). Web developer, Jan Koláček (2011-). Available 
     from <http://cantus.uwaterloo.ca/>. [date accessed].
