@@ -1,8 +1,8 @@
 CantusCorpus
 ============
 
-The CantusCorpus is a corpus of plainchant intended specifically for 
-computational research. It is essentially a research-friendly version dump of 
+The CantusCorpus is a corpus of plainchant intended for 
+computational research. It is essentially a dump of 
 the [Cantus database](http://cantus.uwaterloo.ca/). The database was scraped 
 using its API, and converted to easy-to use CSV files. For many chants,
 transcriptions in the Volpiano format are included. These can be loaded into
@@ -15,6 +15,9 @@ musicology, using the library [`chant21`](https://github.com/bacor/chant21/).
 *up-to-date information, please do not use this corpus, but use Cantus directly.*
 
 [**> Download the latest release of the CantusCorpus**](https://github.com/bacor/cantuscorpus/releases/latest)
+
+> Check out [chant21](https://github.com/bacor/chant21/) and the
+[GregoBaseCorpus](https://github.com/bacor/gregobasecorpus/), a related plainchant corpus.
 
 Citation
 --------
@@ -29,14 +32,14 @@ as [suggested on its website](http://cantus.uwaterloo.ca/citations):
 
 Further please cite the paper describing the CantusCorpus:
 
-    todo
+    (forthcoming)
 
 Versions
 --------
 
 As Cantus is being updated continuously, we plan to occasionaly release new 
-versions of the CantusCorpus as well. All of these will be explicitly versioned,
-can be downloaded from GitHub and referenced using a Zenodo DOI. 
+versions of the CantusCorpus as well. All of these will be versioned,
+can be downloaded from GitHub.
 
 Licence
 -------
