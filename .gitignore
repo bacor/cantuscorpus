@@ -1,11 +1,11 @@
+dist/
+scrape/
+*.log
+
 .vscode
-tmp
 __pycache__/
 .DS_Store
 __pycache__
 
-dist/*/csv
-scrape/
-
+tmp
 env/
-*.log
