@@ -16,8 +16,8 @@ musicology, using the library [`chant21`](https://github.com/bacor/chant21/).
 
 [**> Download the latest release of the CantusCorpus**](https://github.com/bacor/cantuscorpus/releases/latest)
 
-> Check out [chant21](https://github.com/bacor/chant21/) and the
-[GregoBaseCorpus](https://github.com/bacor/gregobasecorpus/), a related plainchant corpus.
+[> Check out chant21](https://github.com/bacor/chant21/) and the
+[GregoBaseCorpus](https://github.com/bacor/gregobasecorpus/), a related plainchant corpus.*
 
 Citation
 --------
