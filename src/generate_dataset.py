@@ -338,9 +338,12 @@ def generate_corpus(scrape_name):
     orig_ids = pd.Series(orig_ids).sort_index()
     orig_ids.name = 'orig_id'
     orig_ids.index.name = 'id'
-    orig_ids.to_csv(os.path.join(CSV_DIR, 'orig_id.csv'))
+    orig_ids_fn = os.path.join(CSV_DIR, 'orig_id.csv')
+    orig_ids.to_csv(orig_ids_fn)
+    logging.info(f'Stored original ids to {relpath(orig_ids_fn)}')
     
     # Step 5: update foreign ids and reorder the columns
+    logging.info('Updating foreign ids and reordering columns...')
     orig_ids = orig_ids.reset_index()
     for rtype in TYPES:
         table_fn = os.path.join(CSV_DIR, f'{rtype}.csv')
@@ -351,6 +354,13 @@ def generate_corpus(scrape_name):
             assert set(table.columns) == set(order)
             table = table[order]
         table.to_csv(table_fn)
+
+    chant = pd.read_csv(os.path.join(CSV_DIR, 'chant.csv'), index_col=0)
+    has_volpiano = chant.volpiano.isna() == False
+    sample = chant.loc[has_volpiano, :].sample(n=2000, random_state=0).sort_index()
+    sample_fn = os.path.join(CSV_DIR, 'chant-demo-sample.csv')
+    sample.to_csv(sample_fn)
+    logging.info(f'Stored a random sample of 2000 chants to {relpath(sample_fn)}')
 
 ###
 
@@ -495,7 +505,7 @@ def compress_corpus():
     shutil.make_archive(archive_fn, 'zip', OUTPUT_DIR)
     source_fn = f'{archive_fn}.zip'
     target_fn = os.path.join(OUTPUT_DIR, f'cantuscorpus-v{__version__}.zip')
-    logging.info(f"Compressing the corpus: '{os.path.relpath(target_fn, start=OUTPUT_DIR)}")
+    logging.info(f"Compressing the corpus: {os.path.relpath(target_fn, start=OUTPUT_DIR)}")
     os.rename(source_fn, target_fn)
 
 ###
