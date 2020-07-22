@@ -7,17 +7,14 @@ the [Cantus database](http://cantus.uwaterloo.ca/). The database was scraped
 using its API, and converted to easy-to use CSV files. For many chants,
 transcriptions in the Volpiano format are included. These can be loaded into
 [music21](https://web.mit.edu/music21/), a Python toolkit for computational 
-musicology, using the library `chant21`. 
+musicology, using the library [`chant21`](https://github.com/bacor/chant21/).
 
 *Note: Even the latest version of the corpus will generally be out-dated, as*
 *the Cantus database is updated continuously. CantusCorpus is intended only for*
 *computational studies, where this is less of a problem. If you require*
 *up-to-date information, please do not use this corpus, but use Cantus directly.*
 
-Usage
------
-
-TODO: example of using the corpus with chant21
+[**> Download the latest release of the CantusCorpus**](https://github.com/bacor/cantuscorpus/releases/latest)
 
 Citation
 --------
@@ -54,6 +51,6 @@ Generating the corpus
 
 The CantusCorpus is created automatically after scraping the Cantus API.
 If you just want to use the corpus, you don't have to regenerate it yourself:
-simply download one of the releases and you're good to go.
-But if you want to generate the corpus yourself, you can of course do so.
-All code and some instructions are available in the `src` directory.
+simply download [the latest release](https://github.com/bacor/cantus/releases/latest) 
+and you're good to go. But if you want to regenerate the corpus yourself, 
+you can of course do so: [read on...](https://github.com/bacor/cantuscorpus/tree/master/src).

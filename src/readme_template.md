@@ -6,8 +6,8 @@ computational research. It is essentially a research-friendly version dump of
 the [Cantus database](http://cantus.uwaterloo.ca/) [1]. The database was scraped 
 using its API, and converted to easy-to use CSV files. For many chants,
 transcriptions in the Volpiano format are included. These can be loaded into
-[music21](https://web.mit.edu/music21/), a Python toolkit for computational 
-musicology, using the library `chant21`. 
+[`music21`](https://web.mit.edu/music21/), a Python toolkit for computational 
+musicology, using the library [`chant21`](https://github.com/bacor/chant21). 
 
 | Summary                          |                      |
 |----------------------------------|----------------------|
@@ -52,8 +52,8 @@ Versions
 --------
 
 As Cantus is being updated continuously, we plan to occasionaly release new 
-versions of the CantusCorpus as well. All of these will be explicitly versioned,
-can be downloaded from GitHub and referenced using a Zenodo DOI. 
+versions of the CantusCorpus as well. All of these will be versioned,
+can be downloaded from GitHub. 
 
 Tables
 ------

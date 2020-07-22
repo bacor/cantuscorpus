@@ -57,11 +57,6 @@ Finally, we automatically generate a README file containing some automatically
 computed statistics about value frequencies. All this ends up in a directory 
 `dists/cantuscorpus-v0.1`, which is zipped and released.
 
-Usage
------
-
-To do 
-
 License
 -------
 
