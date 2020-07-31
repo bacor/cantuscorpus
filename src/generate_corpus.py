@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------------
+# Author: Bas Cornelissen
+# Copyright © 2019 Bas Cornelissen
+# Licence: MIT
+# -----------------------------------------------------------------------------
+"""Generate the CantusCorpus"""
 import os
 import logging
 import glob

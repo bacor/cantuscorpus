@@ -1,5 +1,5 @@
 CantusCorpus v{version}
-===========================
+=================
 
 The CantusCorpus is a corpus of plainchant intended specifically for 
 computational research. It is essentially a research-friendly version dump of 
