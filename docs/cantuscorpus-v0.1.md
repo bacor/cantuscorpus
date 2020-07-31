@@ -1,5 +1,5 @@
-CantusCorpus v0.2
-=================
+CantusCorpus v0.1
+===========================
 
 The CantusCorpus is a corpus of plainchant intended specifically for 
 computational research. It is essentially a research-friendly version dump of 
@@ -11,8 +11,8 @@ musicology, using the library [`chant21`](https://github.com/bacor/chant21).
 
 | Summary                          |                      |
 |----------------------------------|----------------------|
-| CantusCorpus version             | 0.2                  |
-| Corpus generated on              | 31 July 2020         |
+| CantusCorpus version             | 0.1                  |
+| Corpus generated on              | 13 July 2020         |
 | Cantus database scraped on       | 09 July 2020         |
 | Number of chants                 | 497071               |
 | Number of sources                | 640                  |
@@ -43,17 +43,12 @@ as [suggested on its website](http://cantus.uwaterloo.ca/citations):
     Ruth Steiner (1987-1996). Web developer, Jan Koláček (2011-). Available 
     from <http://cantus.uwaterloo.ca/>. [date accessed].
 
-Further please cite the paper describing the CantusCorpus, and please mention
-which version of the corpus you used.
-
-    todo
-
 Versions
 --------
 
 As Cantus is being updated continuously, we plan to occasionaly release new 
 versions of the CantusCorpus as well. All of these will be versioned,
-can be downloaded from GitHub. 
+can be downloaded from GitHub.
 
 Tables
 ------
@@ -99,7 +94,7 @@ Below you find an overview of all fields in each table. For some fields we have 
 | 7            | 45893 |    9% |                                          |
 | 4            | 33048 |    7% |                                          |
 | 2            | 29485 |    6% |                                          |
-| *Others*     | 117083 |   24% | `3`, `?`, `r`, `5`, `6`, `6T`, `4T`, `1S`, `2T`, `1T`, `8S`, `2S`, `3S`, `6S`, `5S`, `7S`, `8*`, `4S`, `1*`, `G`, `7*`, `Gd`, `4*`, `8?`, `7T`, `Gc`, `?S`, `D`, `Da`, `5T`, `E`, `3*`, `2*`, `8T`, `1?`, `4?`, `7?`, `3T`, `6*`, `?T`, `F`, `M`, `5*`, `2?`, `3?`, `ad`, `6?`, `Fa`, `5?`, `7/8`, `EE`, `td`, `Ea`, `1/2`, `5T/6T`, `1T/2T`, `8C`, `4A`, `*4`, `3/4`, `DF`, `7,8`, `S`, `1,2`, `DE`, `5,6`, `c`, `*1`, `1T/3T`, `?*`, `5/6`, `6T?`, `*8`, `Ec`, `FC`, `7T?`, `*2`, `*6`, `*3`, `3,4`, `2 - 1`, `3T/4T`, `Fc`, `Eb`, `todo`, `R`, `*7`, `*5`, `2T*`, `cd`, `2T?`, `5C`, `EG`, `1T?`, `P`, `Ge`, `?4`, `DG`, `?pb 6T`, `ac`, `4s`, `Ga`, `IT`, `8T?`, `F1`, `6T*`, `I`, `5T?`, `8/5?`, `r*`, `a`, `3.1`, `CF`, `G?`, `7B`, `7a`, `4T?`, `4/`, `4t`, `r?`, `? 2`, `3.2`, `7s`, `2/2T`, `1 - 2`, `5/7?`, `8 7`, `c2`, `3s`, `5*?`, `6F`, `7*?`, `84`, `5T*`, `8 - 7` |
+| *Others*     | 117083 |   24% | `3`, `?`, `r`, `5`, `6`, `6T`, `4T`, `1S`, `2T`, `1T`, `8S`, `2S`, `3S`, `6S`, `5S`, `7S`, `8*`, `4S`, `1*`, `G`, `7*`, `Gd`, `4*`, `8?`, `7T`, `Gc`, `?S`, `D`, `Da`, `E`, `5T`, `3*`, `2*`, `8T`, `1?`, `4?`, `7?`, `3T`, `6*`, `?T`, `F`, `M`, `5*`, `2?`, `3?`, `ad`, `6?`, `Fa`, `5?`, `7/8`, `EE`, `td`, `Ea`, `1/2`, `5T/6T`, `1T/2T`, `8C`, `4A`, `*4`, `3/4`, `DF`, `7,8`, `1,2`, `S`, `DE`, `5,6`, `c`, `*1`, `6T?`, `?*`, `5/6`, `1T/3T`, `Ec`, `*8`, `FC`, `7T?`, `*2`, `*3`, `*6`, `3,4`, `2 - 1`, `Fc`, `Eb`, `todo`, `3T/4T`, `2T?`, `R`, `cd`, `2T*`, `*5`, `*7`, `P`, `5C`, `F1`, `DG`, `Ge`, `1T?`, `EG`, `8T?`, `ac`, `?4`, `4s`, `IT`, `6T*`, `Ga`, `?pb 6T`, `3s`, `8 - 7`, `4t`, `3.1`, `4T?`, `6F`, `2/2T`, `3.2`, `7a`, `5T?`, `5T*`, `5*?`, `8/5?`, `7B`, `4/`, `CF`, `5/7?`, `I`, `7*?`, `84`, `r*`, `G?`, `r?`, `? 2`, `8 7`, `7s`, `c2`, `1 - 2`, `a` |
 | *None*     | 38844 |    8% | |
 
 #### Frequencies of `chant.feast_id` values
@@ -221,6 +216,13 @@ Below you find an overview of all fields in each table. For some fields we have 
 |--------------|------|----------------------------------------------------|
 | id           | str  | a globally unique id of the form `provenance_123`  |
 | name         | str  |                                                    |
+### Segment
+
+
+| Column       | Type | Description                                        |
+|--------------|------|----------------------------------------------------|
+| id           |      |                                                    |
+| name         |      |                                                    |
 ### Siglum
 
 
@@ -244,7 +246,8 @@ Below you find an overview of all fields in each table. For some fields we have 
 | provenance   | str  |                                                    |
 | provenance_detail | str  |                                                    |
 | provenance_id | str  |                                                    |
-| segment      | str  | Either `cantus` or `bower`, to indicate whether the source is part of  the Cantus Database or of the Bower Sequence Database (Clavis  Sequentiarum);  see also [here](http://cantus.uwaterloo.ca/sources?segment=4064). |
+| segment      | str  |                                                    |
+| segment_id   | str  |                                                    |
 | summary      | str  |                                                    |
 | indexing_notes | str  |                                                    |
 | liturgical_occasions | str  |                                                    |
@@ -255,8 +258,7 @@ Below you find an overview of all fields in each table. For some fields we have 
 
 This table maps CantusCorpus ids to the original ids used by the the Cantus API.
 
-Changelog v0.2
+Changelog v0.1
 -------------------
 
-- Include a CSV file with a random sample of 2000 chants to speed up development
-- Drop the sequence.csv table (issue #2)
+- Test
