@@ -233,11 +233,6 @@ provenance:
     - name: name 
       dtype: str
 
-segment:
-  fields:
-    - name: id
-    - name: name
-
 siglum:
   fields:
     - name: id
@@ -273,8 +268,11 @@ source:
       dtype: str
     - name: segment
       dtype: str
-    - name: segment_id
-      dtype: str
+      description: >
+        Either `cantus` or `bower`, to indicate whether the source is part of 
+        the Cantus Database or of the Bower Sequence Database (Clavis 
+        Sequentiarum); 
+        see also [here](http://cantus.uwaterloo.ca/sources?segment=4064).
     - name: summary
       dtype: str
     - name: indexing_notes

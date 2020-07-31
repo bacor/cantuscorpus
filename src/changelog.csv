@@ -1,2 +1,4 @@
 version,changes
 0.1,Test
+0.2,Include a CSV file with a random sample of 2000 chants to speed up development
+0.2,Drop the sequence.csv table (issue #2)

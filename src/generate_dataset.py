@@ -12,7 +12,7 @@ import numpy as np
 import datetime
 
 # CantusCorpus version
-__version__ = '0.1'
+__version__ = '0.2'
 
 SRC_DIR = os.path.dirname(__file__)
 ROOT_DIR = os.path.abspath(os.path.join(SRC_DIR, os.path.pardir))
@@ -22,7 +22,7 @@ OUTPUT_DIR = os.path.join(DIST_DIR, f'cantuscorpus-v{__version__}')
 CSV_DIR = os.path.join(OUTPUT_DIR, 'csv')
 TMP_DIR = os.path.join(OUTPUT_DIR, 'tmp')
 
-# Two types are ignored: portfolio and source_status
+# Three types are ignored: portfolio, source_status, segment
 TYPES = [
     'century',
     'chant',
@@ -32,7 +32,6 @@ TYPES = [
     'notation',
     'office',
     'provenance',
-    'segment',
     'siglum',
     'source'
 ]
@@ -255,6 +254,16 @@ def process_table_office(df, **kwargs):
     df['id'] = [f'office_{name.lower()}' for name in df['name']]
     return df
 
+def process_table_source(df, **kwargs):
+    df = process_table_default(df, 'source')
+    segments = {
+        'CANTUS Database': 'cantus',
+        'Bower Sequence Database': 'bower'
+    }
+    del df['segment_id']
+    df['segment'] = df['segment'].map(lambda segm: segments.get(segm, segm))
+    return df
+
 def process_table_chant(df, **kwargs):
     df.sort_values('incipit', inplace=True)
     df['id'] = [f'chant_{i:06d}' for i in range(1, len(df)+1)]
@@ -311,18 +320,18 @@ def update_foreign_ids(table, orig_ids):
 def generate_corpus(scrape_name):
     
     # Step 1
-    resources = read_resources(scrape_name)
-    resources_fn = os.path.join(TMP_DIR, f'resources-{scrape_name}.csv')
-    resources.to_csv(resources_fn)
-    logging.info(f'Stored resources temporarily to {relpath(resources_fn)}')
-    resources = pd.read_csv(resources_fn, index_col=0)
+    # resources = read_resources(scrape_name)
+    # resources_fn = os.path.join(TMP_DIR, f'resources-{scrape_name}.csv')
+    # resources.to_csv(resources_fn)
+    # logging.info(f'Stored resources temporarily to {relpath(resources_fn)}')
+    # resources = pd.read_csv(resources_fn, index_col=0)
 
     # After extracting all resources, you can generate a subset with resources
     # of all types to speed up the development process
-    # dev_resources_fn = os.path.join(TMP_DIR, 'dev-resources.csv')
+    dev_resources_fn = os.path.join(TMP_DIR, 'dev-resources.csv')
     # dev_resources = sample_dev_resources(resources)
     # dev_resources.to_csv(dev_resources_fn)
-    # resources = pd.read_csv(dev_resources_fn, index_col=0)
+    resources = pd.read_csv(dev_resources_fn, index_col=0)
 
     # Step 2
     orig_ids = {}
@@ -512,30 +521,30 @@ def compress_corpus():
  
 def main():
     # Clear output_dir before starting logging to that directory
-    if os.path.exists(OUTPUT_DIR):
-        shutil.rmtree(OUTPUT_DIR)
-    os.makedirs(OUTPUT_DIR)
+    # if os.path.exists(OUTPUT_DIR):
+    #     shutil.rmtree(OUTPUT_DIR)
+    # os.makedirs(OUTPUT_DIR)
     if not os.path.exists(CSV_DIR):
         os.makedirs(CSV_DIR)
     if not os.path.exists(TMP_DIR):
         os.makedirs(TMP_DIR)
 
-    # Set up logging
-    log_fn = os.path.join(OUTPUT_DIR, 'corpus-generation.log')
-    logging.basicConfig(filename=log_fn,
-                        filemode='w',
-                        format='%(levelname)s %(asctime)s %(message)s',
-                        datefmt='%d-%m-%y %H:%M:%S',
-                        level=logging.INFO)
-    logging.info(f'Start generating CantusCorpus v{__version__}')
-    logging.info(f"> Output directory: '{relpath(OUTPUT_DIR)}'")
+    # # Set up logging
+    # log_fn = os.path.join(OUTPUT_DIR, 'corpus-generation.log')
+    # logging.basicConfig(filename=log_fn,
+    #                     filemode='w',
+    #                     format='%(levelname)s %(asctime)s %(message)s',
+    #                     datefmt='%d-%m-%y %H:%M:%S',
+    #                     level=logging.INFO)
+    # logging.info(f'Start generating CantusCorpus v{__version__}')
+    # logging.info(f"> Output directory: '{relpath(OUTPUT_DIR)}'")
 
     # Go
     generate_corpus('2020-07-09-scrape-v0.1')
     writer = ReadmeWriter()
     writer.write_readme()
-    shutil.rmtree(TMP_DIR)
-    compress_corpus()
+    # shutil.rmtree(TMP_DIR)
+    # compress_corpus()
 
 if __name__ == '__main__':
     # import doctest
