@@ -320,18 +320,18 @@ def update_foreign_ids(table, orig_ids):
 def generate_corpus(scrape_name):
     
     # Step 1
-    # resources = read_resources(scrape_name)
-    # resources_fn = os.path.join(TMP_DIR, f'resources-{scrape_name}.csv')
-    # resources.to_csv(resources_fn)
-    # logging.info(f'Stored resources temporarily to {relpath(resources_fn)}')
-    # resources = pd.read_csv(resources_fn, index_col=0)
+    resources = read_resources(scrape_name)
+    resources_fn = os.path.join(TMP_DIR, f'resources-{scrape_name}.csv')
+    resources.to_csv(resources_fn)
+    logging.info(f'Stored resources temporarily to {relpath(resources_fn)}')
+    resources = pd.read_csv(resources_fn, index_col=0)
 
     # After extracting all resources, you can generate a subset with resources
     # of all types to speed up the development process
-    dev_resources_fn = os.path.join(TMP_DIR, 'dev-resources.csv')
+    # dev_resources_fn = os.path.join(TMP_DIR, 'dev-resources.csv')
     # dev_resources = sample_dev_resources(resources)
     # dev_resources.to_csv(dev_resources_fn)
-    resources = pd.read_csv(dev_resources_fn, index_col=0)
+    # resources = pd.read_csv(dev_resources_fn, index_col=0)
 
     # Step 2
     orig_ids = {}
@@ -382,16 +382,6 @@ class ReadmeWriter(object):
             raise Exception('CSV directory not found')
 
         # Load all csv files
-        # chants_fn = os.path.join(CSV_DIR, 'chants.csv')
-        # self.chants = pd.read_csv(chants_fn, index_col=0) 
-        # chant_sources_fn = os.path.join(CSV_DIR, 'chant_sources.csv')
-        # self.chant_sources = pd.read_csv(chant_sources_fn, index_col=0)
-        # chant_tags_fn = os.path.join(CSV_DIR, 'chant_tags.csv')
-        # self.chant_tags = pd.read_csv(chant_tags_fn, index_col=0)
-        # sources_fn = os.path.join(CSV_DIR, 'sources.csv')
-        # self.sources = pd.read_csv(sources_fn, index_col=0)
-        # tags_fn = os.path.join(CSV_DIR, 'tags.csv')
-        # self.tags = pd.read_csv(tags_fn, index_col=0)
         self.tables = {}
         for rtype in TABLE_STRUCTURE:
             table_fn = os.path.join(CSV_DIR, f'{rtype}.csv')
@@ -521,30 +511,30 @@ def compress_corpus():
  
 def main():
     # Clear output_dir before starting logging to that directory
-    # if os.path.exists(OUTPUT_DIR):
-    #     shutil.rmtree(OUTPUT_DIR)
-    # os.makedirs(OUTPUT_DIR)
+    if os.path.exists(OUTPUT_DIR):
+        shutil.rmtree(OUTPUT_DIR)
+    os.makedirs(OUTPUT_DIR)
     if not os.path.exists(CSV_DIR):
         os.makedirs(CSV_DIR)
     if not os.path.exists(TMP_DIR):
         os.makedirs(TMP_DIR)
 
-    # # Set up logging
-    # log_fn = os.path.join(OUTPUT_DIR, 'corpus-generation.log')
-    # logging.basicConfig(filename=log_fn,
-    #                     filemode='w',
-    #                     format='%(levelname)s %(asctime)s %(message)s',
-    #                     datefmt='%d-%m-%y %H:%M:%S',
-    #                     level=logging.INFO)
-    # logging.info(f'Start generating CantusCorpus v{__version__}')
-    # logging.info(f"> Output directory: '{relpath(OUTPUT_DIR)}'")
+    # Set up logging
+    log_fn = os.path.join(OUTPUT_DIR, 'corpus-generation.log')
+    logging.basicConfig(filename=log_fn,
+                        filemode='w',
+                        format='%(levelname)s %(asctime)s %(message)s',
+                        datefmt='%d-%m-%y %H:%M:%S',
+                        level=logging.INFO)
+    logging.info(f'Start generating CantusCorpus v{__version__}')
+    logging.info(f"> Output directory: '{relpath(OUTPUT_DIR)}'")
 
     # Go
     generate_corpus('2020-07-09-scrape-v0.1')
     writer = ReadmeWriter()
     writer.write_readme()
-    # shutil.rmtree(TMP_DIR)
-    # compress_corpus()
+    shutil.rmtree(TMP_DIR)
+    compress_corpus()
 
 if __name__ == '__main__':
     # import doctest
